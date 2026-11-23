@@ -1,0 +1,8 @@
+{
+  "abi": 3,
+  "id": "auto_wah",
+  "sources": ["auto_wah_main.c"],
+  "callbacks": {"tick": "auto_wah_tick", "get": "auto_wah_get"},
+  "host": {"selector": 123, "set_bytes": 0, "max_reply_bytes": 5},
+  "resources": {"state_bytes": 24, "stack_bytes": 192, "tick_us": 30}
+}

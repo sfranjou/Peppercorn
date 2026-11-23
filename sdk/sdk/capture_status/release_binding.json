@@ -1,0 +1,98 @@
+{
+  "schema": 1,
+  "parent_c_sha256": "75f63497158b32b1ea559e82dde799166fdcde1cffd37313b60eb4224be21d67",
+  "reservations": [
+    {
+      "section": "capture",
+      "start": 67232,
+      "end": 69628,
+      "sha256": "ac00d1c17509ea4c7bd3691d91224940031db946734408a05a74b21ed3767189"
+    },
+    {
+      "section": "capture_aux",
+      "start": 72476,
+      "end": 73724,
+      "sha256": "03a27a775b9c3bbae9c6173d1b9f4a7173889568e7127ddff2c33522d029f6a9"
+    }
+  ],
+  "hooks": [
+    {
+      "name": "early",
+      "address": 19516,
+      "before": "a1060100",
+      "assembly": ".word gp50_capture_early"
+    },
+    {
+      "name": "boot",
+      "address": 17870,
+      "before": "0cf071f8",
+      "assembly": "bl gp50_capture_boot_hook"
+    },
+    {
+      "name": "lookup",
+      "address": 26042,
+      "before": "0af086f8",
+      "assembly": "bl gp50_capture_lookup_hook"
+    },
+    {
+      "name": "init",
+      "address": 25988,
+      "before": "0af0a4b8",
+      "assembly": "b.w gp50_capture_init_hook"
+    },
+    {
+      "name": "loader",
+      "address": 21288,
+      "before": "0bf0dfb9",
+      "assembly": "b.w gp50_capture_loader_hook"
+    },
+    {
+      "name": "tuner",
+      "address": 36842,
+      "before": "07f08bfb",
+      "assembly": "bl gp50_capture_tuner_hook"
+    },
+    {
+      "name": "store",
+      "address": 31256,
+      "before": "08f07fbe",
+      "assembly": "b.w gp50_capture_store_hook"
+    },
+    {
+      "name": "delete",
+      "address": 28544,
+      "before": "09f0d6bb00bf",
+      "assembly": "b.w gp50_capture_delete_hook\nnop"
+    },
+    {
+      "name": "metadata",
+      "address": 28896,
+      "before": "09f031bb00bf",
+      "assembly": "b.w gp50_capture_metadata_hook\nnop"
+    },
+    {
+      "name": "dispatch",
+      "address": 25714,
+      "before": "0af081f9",
+      "assembly": "bl gp50_capture_dispatch_hook"
+    },
+    {
+      "name": "erase_result",
+      "address": 31558,
+      "before": "09f0e9ff",
+      "assembly": "bl gp50_capture_erase_result"
+    },
+    {
+      "name": "program_result",
+      "address": 31648,
+      "before": "09f0c0ff",
+      "assembly": "bl gp50_capture_program_result"
+    },
+    {
+      "name": "heap",
+      "address": 17924,
+      "before": "283d0020",
+      "assembly": ".word 0x20003d28"
+    }
+  ]
+}

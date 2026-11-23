@@ -1,0 +1,36 @@
+{
+  "name": "FIR LowPass",
+  "type_name": "Distortion",
+  "group": 2,
+  "public_id": "0x03000060",
+  "source": "fir_lowpass.c",
+  "init": "fir_lowpass_init",
+  "process": "fir_lowpass_process",
+  "copro": {
+    "module": "program.py"
+  },
+  "parameters": [
+    {
+      "name": "Cutoff",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 60,
+      "storage_index": 0,
+      "knob": 0,
+      "flags": 0,
+      "display_code": 21
+    },
+    {
+      "name": "VOL",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 50,
+      "storage_index": 1,
+      "knob": 255,
+      "flags": 0,
+      "display_code": 21
+    }
+  ]
+}

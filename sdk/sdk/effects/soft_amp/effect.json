@@ -1,0 +1,48 @@
+{
+  "name": "Soft Amp",
+  "type_name": "Clean",
+  "group": 3,
+  "public_id": "0x07000070",
+  "linked_cab": "0x0a000001",
+  "source": "soft_amp.c",
+  "init": "soft_amp_init",
+  "process": "soft_amp_process",
+  "copro": {
+    "module": "program.py"
+  },
+  "parameters": [
+    {
+      "name": "Drive",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 40,
+      "storage_index": 0,
+      "knob": 255,
+      "flags": 0,
+      "display_code": 21
+    },
+    {
+      "name": "Tone",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 60,
+      "storage_index": 1,
+      "knob": 255,
+      "flags": 0,
+      "display_code": 21
+    },
+    {
+      "name": "VOL",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 50,
+      "storage_index": 2,
+      "knob": 255,
+      "flags": 0,
+      "display_code": 21
+    }
+  ]
+}

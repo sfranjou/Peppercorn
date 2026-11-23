@@ -1,0 +1,16 @@
+"""Compared UserData state, notifications, copies and initialized packets."""
+NAME='userdata_events_c'
+REQUIRES=('userdata_access_c',)
+CONFLICTS=()
+ORACLES=()
+CASE_KINDS=()
+C_SOURCES=('sdk/nds/userdata_events/userdata_events.c',)
+HOOKED=(287264, 287298, 287330, 287374, 287466, 287504, 287718, 287754, 287790, 287834, 287878, 287976, 288332, 288958, 289012, 289028, 289068, 289074, 289090, 289112, 289128, 289154, 289168, 289180, 289214, 289796, 289874, 289888, 289976, 289986, 289996, 290008, 290066, 290096, 290196, 290232, 290268, 290298, 290368, 290404, 290616, 290650, 290676, 290694, 290704, 290830, 290858, 290898, 290932, 291068, 291100, 291146, 291200, 291230, 294508, 294536, 294832)
+C_HARD_FLOAT=True
+C_HARD_FLOAT_SOURCES=C_SOURCES
+C_ENTRIES=tuple(f'nds_ude_{a:05x}' for a in HOOKED)
+CODE={}
+DATA={}
+HOOKS={}
+def patches(c):
+ return [(a,f'j {c.labels[f"nds_ude_{a:05x}"]:#x}',f'compared UserData event {a:05x}')for a in HOOKED]

@@ -1,0 +1,101 @@
+{
+  "id": "editor_drum_fix",
+  "mod": 100,
+  "version": "N1.1.0V",
+  "name": "NOT_RELEASED_MOD100_EDITOR_DRUM_FIX.bin",
+  "summary": "MOD097 plus short DRUM playback toggle in the effect editor; unchanged stateless component ABI1",
+  "parent": {
+    "image": "work/custom_images/mod055_legacy_ui/GP-50_V1.1.0_MOD055_LegacyUiC.bin",
+    "sha256": "37ec05962f60d5508300ba62407b350c4c6b1d19629645a71a59e29db8960ac3",
+    "label": "MOD055 N1.1.0c "
+  },
+  "features": [
+    "telemetry_c",
+    "home_meter_c",
+    "mem_page_c",
+    "gr_meter_c",
+    "admission_c",
+    "refuse_c",
+    "catalog_c",
+    "ui_input_c",
+    "legacy_ui_c",
+    "host_layer_c",
+    "diagnostics_c",
+    "protocol_scalars_c",
+    "application_helpers_c",
+    "application_more_c",
+    "home_tick_c",
+    "tap_safe_c",
+    "data_access_c",
+    "userdata_access_c",
+    "userdata_events_c",
+    "userdata_fields_c",
+    "home_value_c",
+    "ui_render_c",
+    "parameter_tables_c",
+    "parameter_formats_c",
+    "ui_open_c",
+    "userdata_services_c",
+    "home_callbacks_c",
+    "window_common_c",
+    "data_control_c",
+    "widget_builders_c",
+    "widget_adapters_c",
+    "application_bulk_c",
+    "remaining_application_c",
+    "capture_status_c",
+    "footswitch_ab_c",
+    "external_components_c"
+  ],
+  "segment": {
+    "base": "0x16c6c0",
+    "limit": "0x175d00",
+    "state": "0x2001f4a0",
+    "state_bytes": 272,
+    "lease_offset": 96,
+    "legacy_cache": "0x2001f3b0"
+  },
+  "output": "work/custom_images/editor_drum_fix",
+  "admission_table": "v4",
+  "refusal_home": true,
+  "region_e": "stock_v110",
+  "catalog_ext": {
+    "extension": "sdk/nds/catalog/extension.json",
+    "sha256": "e220e8819455e9ff3b371d2fb8889c00a786651eb5285c9850a8abafdb967d9c"
+  },
+  "c_hard_float": true,
+  "c_chains": true,
+  "code_holes": {
+    "min": 4,
+    "placement": "subset"
+  },
+  "c_named_stock_calls": true,
+  "hook_preimages": {
+    "0x21e44": {
+      "parent": "fc61fa2a",
+      "stock": "fc61fa28",
+      "reason": "MOD055 home count at 0x21e46 is 26; reconstructed ui_home_open registers relocated table with count26"
+    }
+  },
+  "c_remaining_chains": true,
+  "c_notify_select_chains": true,
+  "code_room_note": "Shared immutable admission tables remove920 duplicate bytes. Candidate limit0x175d00 remains before settings0x176000; exact placement and physical timing remain review gates.",
+  "c_shared_admission_tables": true,
+  "component_only": true,
+  "catalog_descriptor_storage": "region_e_1a4000",
+  "region_e_code": {
+    "placement": "auto"
+  },
+  "c_defines": [
+    "GP50_FS_AB=1",
+    "GP50_ASSIGNMENT_MENU=1",
+    "GP50_COMPONENTS=1"
+  ],
+  "filename": "NOT_RELEASED_MOD100_EDITOR_DRUM_FIX.bin",
+  "b_placement": {
+    "ledger": "work/editor_drum_fix/b_placement/committed.json"
+  },
+  "component_roots": [
+    "sdk/nds/components/examples"
+  ]
+}

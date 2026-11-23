@@ -1,0 +1,154 @@
+{
+  "name": "Para EQ",
+  "type_name": "EQ",
+  "group": 5,
+  "public_id": "0x01000060",
+  "source": "para_eq.c",
+  "init": "para_eq_init",
+  "process": "para_eq_process",
+  "copro": {
+    "stock_program": "eq"
+  },
+  "parameters": [
+    {
+      "name": "LowF",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 40,
+      "storage_index": 0,
+      "knob": 255,
+      "flags": 0,
+      "display_code": 21
+    },
+    {
+      "name": "LowG",
+      "min": -50,
+      "max": 50,
+      "step": 1,
+      "default": 0,
+      "storage_index": 1,
+      "knob": 255,
+      "flags": 0,
+      "display_code": 93
+    },
+    {
+      "name": "MidF",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 50,
+      "storage_index": 2,
+      "knob": 255,
+      "flags": 0,
+      "display_code": 21
+    },
+    {
+      "name": "MidG",
+      "min": -50,
+      "max": 50,
+      "step": 1,
+      "default": 0,
+      "storage_index": 3,
+      "knob": 255,
+      "flags": 0,
+      "display_code": 93
+    },
+    {
+      "name": "MidQ",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 40,
+      "storage_index": 4,
+      "knob": 255,
+      "flags": 0,
+      "display_code": 21
+    },
+    {
+      "name": "HighF",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 50,
+      "storage_index": 5,
+      "knob": 255,
+      "flags": 0,
+      "display_code": 21
+    },
+    {
+      "name": "HighG",
+      "min": -50,
+      "max": 50,
+      "step": 1,
+      "default": 0,
+      "storage_index": 6,
+      "knob": 255,
+      "flags": 0,
+      "display_code": 93
+    },
+    {
+      "name": "VOL",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 50,
+      "storage_index": 7,
+      "knob": 255,
+      "flags": 0,
+      "display_code": 21
+    }
+  ],
+  "chain_settings": [
+    [
+      40,
+      0,
+      50,
+      0,
+      40,
+      50,
+      0,
+      50
+    ],
+    [
+      30,
+      50,
+      50,
+      -50,
+      60,
+      40,
+      50,
+      50
+    ],
+    [
+      100,
+      -50,
+      0,
+      50,
+      100,
+      0,
+      -50,
+      70
+    ],
+    [
+      0,
+      30,
+      100,
+      -30,
+      0,
+      100,
+      30,
+      35
+    ],
+    [
+      60,
+      20,
+      30,
+      40,
+      20,
+      70,
+      -20,
+      50
+    ]
+  ]
+}

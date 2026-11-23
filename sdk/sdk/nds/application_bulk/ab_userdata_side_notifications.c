@@ -1,0 +1,13 @@
+/* Generated explicit public ABI adapters; require linked image review. */
+#define GP50_CATALOG_DIRECT 1
+#pragma GCC optimize("no-jump-tables")
+#define userdata_percent23_notify_set bulk_userdata_side_notifications_userdata_percent23_notify_set
+#define userdata_exp_flag_notify_set bulk_userdata_side_notifications_userdata_exp_flag_notify_set
+#define userdata_byte62_notify_set bulk_userdata_side_notifications_userdata_byte62_notify_set
+#define userdata_exp_target_notify_set bulk_userdata_side_notifications_userdata_exp_target_notify_set
+#define userdata_volume_min_notify_set bulk_userdata_side_notifications_userdata_volume_min_notify_set
+#define userdata_volume_max_notify_set bulk_userdata_side_notifications_userdata_volume_max_notify_set
+#define userdata_tempo_flag_notify_set bulk_userdata_side_notifications_userdata_tempo_flag_notify_set
+#define userdata_storage_refresh bulk_userdata_side_notifications_userdata_storage_refresh
+#include "../../../firmware/reconstructed/nds/userdata_side_notifications.c"
+uint32_t nds_bulk_46e18(uint32_t a0) {(void)a0;return bulk_userdata_side_notifications_userdata_percent23_notify_set(a0,(const StockIo *)0);}

@@ -1,0 +1,47 @@
+{
+  "name": "Auto Pan",
+  "type_name": "EQ",
+  "group": 5,
+  "public_id": "0x01000061",
+  "source": "auto_pan.c",
+  "init": "auto_pan_init",
+  "process": "auto_pan_process",
+  "copro": {
+    "module": "program.py"
+  },
+  "parameters": [
+    {
+      "name": "Rate",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 40,
+      "storage_index": 0,
+      "knob": 255,
+      "flags": 0,
+      "display_code": 21
+    },
+    {
+      "name": "Depth",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 80,
+      "storage_index": 1,
+      "knob": 255,
+      "flags": 0,
+      "display_code": 21
+    },
+    {
+      "name": "VOL",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 50,
+      "storage_index": 2,
+      "knob": 255,
+      "flags": 0,
+      "display_code": 21
+    }
+  ]
+}

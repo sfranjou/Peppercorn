@@ -1,0 +1,8 @@
+{
+  "abi": 1,
+  "id": "answer",
+  "sources": ["answer_main.c"],
+  "callbacks": {"init": null, "tick": null, "get": "answer_get", "set": null},
+  "host": {"selector": 119, "set_bytes": 0, "max_reply_bytes": 2},
+  "resources": {"state_bytes": 0, "stack_bytes": 0, "tick_us": 0}
+}

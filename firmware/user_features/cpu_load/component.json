@@ -1,0 +1,9 @@
+{
+  "abi": 3,
+  "id": "cpu_load",
+  "sources": ["cpu_load_main.c"],
+  "callbacks": {"menu_value": "cpu_load_value", "get": "cpu_load_get"},
+  "host": {"selector": 122, "set_bytes": 0, "max_reply_bytes": 3},
+  "menu": {"title": "CPU", "items": ["CPU load", "ARM", "DSP"]},
+  "resources": {"state_bytes": 0, "stack_bytes": 160, "tick_us": 0}
+}

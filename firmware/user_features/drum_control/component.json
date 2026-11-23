@@ -1,0 +1,8 @@
+{
+  "abi": 3,
+  "id": "drum_control",
+  "sources": ["drum_control_main.c"],
+  "callbacks": {"get": "drum_control_get", "set": "drum_control_set", "event": "drum_control_event"},
+  "host": {"selector": 117, "set_bytes": 3, "max_reply_bytes": 3},
+  "resources": {"state_bytes": 0, "stack_bytes": 96, "tick_us": 0}
+}

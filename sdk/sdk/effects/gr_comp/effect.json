@@ -1,0 +1,67 @@
+{
+  "name": "GR Comp",
+  "type_name": "Compressor",
+  "group": 1,
+  "public_id": "0x01000041",
+  "source": "gr_comp.c",
+  "init": "gr_comp_init",
+  "process": "gr_comp_process",
+  "publish_meter": true,
+  "parameters": [
+    {
+      "name": "Thresh",
+      "min": -40,
+      "max": 0,
+      "step": 1,
+      "default": -20,
+      "storage_index": 0,
+      "knob": 255,
+      "flags": 0,
+      "display_code": 21
+    },
+    {
+      "name": "Ratio",
+      "min": 1,
+      "max": 20,
+      "step": 1,
+      "default": 4,
+      "storage_index": 1,
+      "knob": 255,
+      "flags": 0,
+      "display_code": 21
+    },
+    {
+      "name": "Attack",
+      "min": 1,
+      "max": 50,
+      "step": 1,
+      "default": 5,
+      "storage_index": 2,
+      "knob": 255,
+      "flags": 0,
+      "display_code": 21
+    },
+    {
+      "name": "Release",
+      "min": 20,
+      "max": 500,
+      "step": 1,
+      "default": 120,
+      "storage_index": 3,
+      "knob": 255,
+      "flags": 0,
+      "display_code": 21
+    },
+    {
+      "name": "Gain",
+      "min": 0,
+      "max": 24,
+      "step": 1,
+      "default": 6,
+      "storage_index": 4,
+      "knob": 255,
+      "flags": 0,
+      "display_code": 21
+    }
+  ]
+}

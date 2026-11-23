@@ -1,0 +1,124 @@
+{
+ "schema": 1,
+ "units": "thousandths of the ARM ratio (as admission_costs)",
+ "generator": "sdk/telemetry/nds/sdk_estimates.py --write",
+ "effects": [
+  {
+   "effect": "afterglow_micro",
+   "group": 7,
+   "public_id": "0x0b0000f0",
+   "estimate": 98,
+   "instructions_mean": 9726.0,
+   "factor": 1e-05,
+   "sources_sha256": "b19c8694880d50ab21c40b6afb6d62fcf1e4e552a585d7f34021c3b137b86c20"
+  },
+  {
+   "effect": "auto_swell",
+   "group": 1,
+   "public_id": "0x01000070",
+   "estimate": 27,
+   "instructions_mean": 2677.0,
+   "factor": 1e-05,
+   "sources_sha256": "de858862ba696436e01d704fa79faa33ed3396842d108f51c411684c99425087"
+  },
+  {
+   "effect": "chop_trem",
+   "group": 6,
+   "public_id": "0x04000030",
+   "estimate": 15,
+   "instructions_mean": 1439.0,
+   "factor": 1e-05,
+   "sources_sha256": "7f16da75e4e748601edd11fbab38adde586f9c016373abb37d0a8e24e96895eb"
+  },
+  {
+   "effect": "clouds_verb",
+   "group": 8,
+   "public_id": "0x0c000041",
+   "estimate": 119,
+   "instructions_mean": 8567.5,
+   "factor": 1e-05,
+   "sources_sha256": "718c0403f65082232f8171dd748c66d9ebf5df700ea29aafc13b1f5fd16b93b0"
+  },
+  {
+   "effect": "fdn_verb",
+   "group": 8,
+   "public_id": "0x0c000040",
+   "estimate": 167,
+   "instructions_mean": 16621.0,
+   "factor": 1e-05,
+   "sources_sha256": "5c700507bc179d3bc488769d34a1a451ba9d04186901fd20f430b37ff8f85c62"
+  },
+  {
+   "effect": "gr_comp",
+   "group": 1,
+   "public_id": "0x01000041",
+   "estimate": 66,
+   "instructions_mean": 6571.0,
+   "factor": 1e-05,
+   "sources_sha256": "bb3bc1849337034fc6e461cd061d78f7aeafb0ed90c695f3ecc7d01bb08383df"
+  },
+  {
+   "effect": "long_echo",
+   "group": 7,
+   "public_id": "0x0b0000f4",
+   "estimate": 85,
+   "instructions_mean": 8437.0,
+   "factor": 1e-05,
+   "sources_sha256": "1942c2bea49e55d5335f066fd60b114a99685076fab17dc229b6323ee4f526f6"
+  },
+  {
+   "effect": "ring_echo",
+   "group": 7,
+   "public_id": "0x0b0000f5",
+   "estimate": 95,
+   "instructions_mean": 9419.0,
+   "factor": 1e-05,
+   "sources_sha256": "ec732ae832e9add9d332dea7d6e08aca7cc10f74a84b2eabd88f7edd74a701f4"
+  },
+  {
+   "effect": "slap_echo",
+   "group": 1,
+   "public_id": "0x01000040",
+   "estimate": 97,
+   "instructions_mean": 9619.9,
+   "factor": 1e-05,
+   "sources_sha256": "0745291c84f25608120b47823536874ba2f358bb4dc51047ef3bc979025d5b4d"
+  },
+  {
+   "effect": "tail_doubler",
+   "group": 6,
+   "public_id": "0x04000031",
+   "estimate": 104,
+   "instructions_mean": 10398.1,
+   "factor": 1e-05,
+   "sources_sha256": "8898d14c06d2284330aaae40136ff1b519af27bac27ce8eebe773de613195d58"
+  },
+  {
+   "effect": "tape",
+   "group": 6,
+   "public_id": "0x04000032",
+   "estimate": 76,
+   "instructions_mean": 7501.1,
+   "factor": 1e-05,
+   "sources_sha256": "dc0543defa68ed5a8bf5a0fb84799adfcdeed1ff1244f453a3c829230fe6eb14"
+  },
+  {
+   "effect": "pitch_splice",
+   "group": 1,
+   "public_id": "0x01000023",
+   "estimate": 178,
+   "sources_sha256": "cf11b41d7193eca8f433f195626cdf13ec4994eaca40efc5f3d0ed4545b13b89",
+   "instructions_peak": 17718,
+   "factor": 1e-05
+  },
+  {
+   "effect": "detune_splice",
+   "group": 1,
+   "public_id": "0x01000029",
+   "estimate": 115,
+   "sources_sha256": "66e3e11aae45c4628520c0aaa9b2453b4466765fa1423535bad8ecdf220481b5",
+   "instructions_peak": 11178,
+   "factor": 1e-05
+  }
+ ]
+}

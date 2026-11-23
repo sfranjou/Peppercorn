@@ -1,0 +1,8 @@
+{
+  "abi": 3,
+  "id": "gr_meter",
+  "sources": ["gr_meter_main.c"],
+  "callbacks": {"strip": "gr_meter_strip", "get": "gr_meter_get"},
+  "host": {"selector": 124, "set_bytes": 0, "max_reply_bytes": 4},
+  "resources": {"state_bytes": 0, "stack_bytes": 192, "tick_us": 0}
+}

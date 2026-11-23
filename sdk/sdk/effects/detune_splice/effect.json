@@ -1,0 +1,50 @@
+{
+  "name": "Detune",
+  "type_name": "Pitch",
+  "group": 1,
+  "stock_ordinal": 10,
+  "public_id": "0x01000029",
+  "source": "detune_splice_effect.c",
+  "init": "detune_splice_init",
+  "process": "detune_splice_process",
+  "restrict_it": true,
+  "allow_internal_calls": {
+    "max_init_stack": 128,
+    "max_process_stack": 384
+  },
+  "parameters": [
+    {
+      "name": "Detune",
+      "storage_index": 0,
+      "min": -50.0,
+      "max": 50.0,
+      "step": 1.0,
+      "default": -25.0,
+      "knob": 0,
+      "flags": 0,
+      "display_code": 88
+    },
+    {
+      "name": "Wet",
+      "storage_index": 1,
+      "min": 0.0,
+      "max": 100.0,
+      "step": 1.0,
+      "default": 50.0,
+      "knob": 255,
+      "flags": 0,
+      "display_code": 21
+    },
+    {
+      "name": "Dry",
+      "storage_index": 2,
+      "min": 0.0,
+      "max": 100.0,
+      "step": 1.0,
+      "default": 50.0,
+      "knob": 255,
+      "flags": 0,
+      "display_code": 21
+    }
+  ]
+}

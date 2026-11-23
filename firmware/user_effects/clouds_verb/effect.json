@@ -1,0 +1,80 @@
+{
+  "name": "Cloud Verb",
+  "type_name": "Reverb",
+  "group": 8,
+  "public_id": "0x0c000041",
+  "source": "clouds_verb.c",
+  "init": "clouds_verb_init",
+  "process": "clouds_verb_process",
+  "restrict_it": true,
+  "tail_region": true,
+  "parameters": [
+    {
+      "name": "Mix",
+      "storage_index": 0,
+      "min": 0.0,
+      "max": 100.0,
+      "step": 1.0,
+      "default": 35.0,
+      "knob": 255,
+      "flags": 0,
+      "display_code": 21
+    },
+    {
+      "name": "Decay",
+      "storage_index": 1,
+      "min": 0.0,
+      "max": 100.0,
+      "step": 1.0,
+      "default": 60.0,
+      "knob": 255,
+      "flags": 0,
+      "display_code": 21
+    },
+    {
+      "name": "Diffusion",
+      "storage_index": 2,
+      "min": 0.0,
+      "max": 100.0,
+      "step": 1.0,
+      "default": 62.0,
+      "knob": 255,
+      "flags": 0,
+      "display_code": 21
+    },
+    {
+      "name": "Damp",
+      "storage_index": 3,
+      "min": 0.0,
+      "max": 100.0,
+      "step": 1.0,
+      "default": 30.0,
+      "knob": 255,
+      "flags": 0,
+      "display_code": 21
+    },
+    {
+      "name": "Freeze",
+      "storage_index": 4,
+      "min": 0.0,
+      "max": 1.0,
+      "step": 1.0,
+      "default": 0.0,
+      "knob": 255,
+      "flags": 0,
+      "display_code": 21
+    },
+    {
+      "name": "VOL",
+      "storage_index": 5,
+      "min": 0.0,
+      "max": 100.0,
+      "step": 1.0,
+      "default": 50.0,
+      "knob": 255,
+      "flags": 0,
+      "display_code": 21
+    }
+  ],
+  "tail_accesses_per_block": 160
+}

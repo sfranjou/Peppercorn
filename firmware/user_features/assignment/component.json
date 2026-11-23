@@ -1,0 +1,23 @@
+{
+  "abi": 3,
+  "id": "assignment",
+  "sources": [
+    "assignment_main.c"
+  ],
+  "callbacks": {
+    "tick": "assignment_on_tick",
+    "event": "assignment_on_event",
+    "get": "assignment_host_get",
+    "set": "assignment_host_set"
+  },
+  "host": {
+    "selector": 113,
+    "set_bytes": 4,
+    "max_reply_bytes": 25
+  },
+  "resources": {
+    "state_bytes": 304,
+    "stack_bytes": 512,
+    "tick_us": 200
+  }
+}

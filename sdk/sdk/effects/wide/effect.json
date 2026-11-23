@@ -1,0 +1,47 @@
+{
+  "name": "Wide",
+  "type_name": "EQ",
+  "group": 5,
+  "public_id": "0x01000062",
+  "source": "wide.c",
+  "init": "wide_init",
+  "process": "wide_process",
+  "copro": {
+    "module": "program.py"
+  },
+  "parameters": [
+    {
+      "name": "Width",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 50,
+      "storage_index": 0,
+      "knob": 255,
+      "flags": 0,
+      "display_code": 21
+    },
+    {
+      "name": "Freq",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 50,
+      "storage_index": 1,
+      "knob": 255,
+      "flags": 0,
+      "display_code": 21
+    },
+    {
+      "name": "VOL",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 50,
+      "storage_index": 2,
+      "knob": 255,
+      "flags": 0,
+      "display_code": 21
+    }
+  ]
+}

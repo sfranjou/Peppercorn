@@ -1,0 +1,15 @@
+{
+  "name": "Auto Swell",
+  "type_name": "Swell",
+  "group": 1,
+  "public_id": "0x01000070",
+  "source": "auto_swell.c",
+  "init": "auto_swell_init",
+  "process": "auto_swell_process",
+  "parameters": [
+    {"name": "Attack", "storage_index": 0, "min": 10.0, "max": 2000.0, "step": 10.0, "default": 400.0, "knob": 255, "flags": 0, "display_code": 21},
+    {"name": "Sens", "storage_index": 1, "min": 0.0, "max": 100.0, "step": 1.0, "default": 50.0, "knob": 255, "flags": 0, "display_code": 21},
+    {"name": "Shape", "storage_index": 2, "min": 0.0, "max": 100.0, "step": 1.0, "default": 50.0, "knob": 255, "flags": 0, "display_code": 21},
+    {"name": "VOL", "storage_index": 3, "min": 0.0, "max": 100.0, "step": 1.0, "default": 50.0, "knob": 255, "flags": 0, "display_code": 21}
+  ]
+}

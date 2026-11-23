@@ -1,0 +1,10 @@
+// Deploy: cd trainer/data_worker && npx wrangler deploy
+// URL: https://lttc-data.<account subdomain>.workers.dev/trainer/v1/di0.flac
+{
+  "name": "lttc-data",
+  "main": "src/index.js",
+  "compatibility_date": "2026-11-01",
+  "workers_dev": true,
+  "preview_urls": false,
+  "r2_buckets": [{ "binding": "DATA", "bucket_name": "lttc-data" }]
+}

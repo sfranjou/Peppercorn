@@ -1,0 +1,64 @@
+/* Compared UserData state, notification and transport routines. */
+#define GP50_CATALOG_DIRECT 1
+#pragma GCC optimize("no-jump-tables")
+#define userdata_notify_23 nds_ude_46cb8
+#define userdata_notify_24 nds_ude_46cc2
+#define userdata_pin4_on nds_ude_46ccc
+#define userdata_pin4_off nds_ude_46cd8
+#define userdata_init_and_refresh nds_ude_46c52
+#define userdata_catalog_init nds_ude_46c60
+#define userdata_word52_byte nds_ude_46f86
+#define userdata_byte2c6_notify_set nds_ude_46f38
+#define userdata_byte50_notify_set nds_ude_46f5a
+#define userdata_byte51_notify_set nds_ude_46f74
+#define userdata_word52_notify_set nds_ude_46f90
+#define userdata_tuner_ref_notify_set nds_ude_47052
+#define userdata_tuner_enter nds_ude_4700e
+#define userdata_tuner_leave nds_ude_4702a
+#define userdata_tempo_notify_set nds_ude_47074
+#define userdata_tempo_mode_set nds_ude_4719e
+#define userdata_exp_min_notify_set nds_ude_47e6c
+#define userdata_exp_max_notify_set nds_ude_47e88
+#define userdata_status_halfword nds_ude_47fb0
+#include "../../../firmware/reconstructed/nds/userdata_control.c"
+#define userdata_byte41_set nds_ude_46c04
+#define userdata_byte10_set nds_ude_46d12
+#define userdata_byte13_set nds_ude_46d30
+#define userdata_trim18_set nds_ude_46d94
+#define userdata_trim1d_set nds_ude_46db8
+#define userdata_trim1f_set nds_ude_46ddc
+#define userdata_trim1e_set nds_ude_46dfa
+#define userdata_byte2c0_set nds_ude_46e40
+#define userdata_byte1a_set nds_ude_46e64
+#define userdata_byte3f_set nds_ude_470fc
+#define userdata_byte3a_set nds_ude_47180
+#define userdata_byte40_set nds_ude_4711c
+#define userdata_midi_channel_notify_set nds_ude_4714a
+#include "../../../firmware/reconstructed/nds/userdata_notifications.c"
+#define userdata_status_buffer_set nds_ude_468be
+#define userdata_status_buffer_get nds_ude_468f4
+#define userdata_link_words_set nds_ude_46904
+#define userdata_link_word nds_ude_4692c
+#define userdata_link_detail_get nds_ude_46932
+#define userdata_settings_buffer_set nds_ude_46942
+#define userdata_settings_buffer_get nds_ude_46958
+#define userdata_settings_buffer_init nds_ude_46968
+#define userdata_sync_begin nds_ude_46982
+#define userdata_sync_clear nds_ude_46990
+#define userdata_sync_tick nds_ude_4699c
+#define userdata_link_wait_tick nds_ude_469be
+#include "../../../firmware/reconstructed/nds/userdata_buffers.c"
+#define userdata_packet_6000 nds_ude_46220
+#define userdata_packet_5002 nds_ude_46242
+#define userdata_packet_6002 nds_ude_46262
+#define userdata_packet_1000 nds_ude_4628e
+#define userdata_preset_id_packet nds_ude_462ea
+#define userdata_tempo_packet nds_ude_46310
+#define userdata_packet_6003 nds_ude_463e6
+#define userdata_packet_6001 nds_ude_4640a
+#define userdata_packet_5000_1 nds_ude_4642e
+#define userdata_packet_5000_2 nds_ude_4645a
+#define userdata_packet_5000_0 nds_ude_46486
+#define userdata_packet_5003 nds_ude_464e8
+#define userdata_packet_word6 nds_ude_4664c
+#include "../../../firmware/reconstructed/nds/userdata_packets.c"

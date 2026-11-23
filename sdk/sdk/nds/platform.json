@@ -1,0 +1,25 @@
+{
+ "schema": 1,
+ "name": "release",
+ "seed_sha256": "6b6524206035863ce1f27a37080abf82f3378a9d643dae8963dc535f2568ba67",
+ "parent": {
+  "image": "work/sdk_platform/release/GP-50_V1.1.0_MOD055_LegacyUiC.bin",
+  "sha256": "af7846b166a1b82ac27538b22763b21815e642e1af2a5b0e22b60bcd58307b98",
+  "label": "MOD055 platform with stock boot animation and the release effect set"
+ },
+ "container_parent": {
+  "image": "work/sdk_platform/release_v3/GP-50_V1.1.0_MOD088_CaptureStatus.bin",
+  "sha256": "5e0056d17ad7f46259dc89f6b2d68681a698ba7f9f2fc7229acd96581b20d8c4"
+ },
+ "table_reference": {
+  "image": "work/sdk_platform/release/GP-50_V1.1.0_MOD054_ToneCapture.bin",
+  "sha256": "0e6cd582adbf14b13ddaeabdfac08ffcba4f2e74cbd6972b8212ab34af3c91b5"
+ },
+ "catalog_ext": {
+  "extension": "sdk/nds/catalog/extension.json",
+  "sha256": "a23f1cee1e95d1308b3afc278cb1d0fee5dcf638e287f896d91f53ecb1127536"
+ },
+ "description": "Stock boot animation; research diagnostics and held Afterglow removed; capture tracks all 80 N->S slots",
+ "base_config": "release_stock_in_place",
+ "seed_source_sha256": "bac87191e40de6387b8cc0df11f643a1b0d1a44253007bb81303ea3d11978bf3"
+}

@@ -1,0 +1,72 @@
+{
+  "name": "Pitch",
+  "type_name": "Pitch",
+  "group": 1,
+  "stock_ordinal": 9,
+  "public_id": "0x01000023",
+  "source": "pitch_splice_effect.c",
+  "init": "pitch_splice_init",
+  "process": "pitch_splice_process",
+  "restrict_it": true,
+  "allow_internal_calls": {
+    "max_init_stack": 128,
+    "max_process_stack": 384
+  },
+  "parameters": [
+    {
+      "name": "High",
+      "storage_index": 0,
+      "min": 0.0,
+      "max": 24.0,
+      "step": 1.0,
+      "default": 12.0,
+      "knob": 0,
+      "flags": 0,
+      "display_code": 83
+    },
+    {
+      "name": "Low",
+      "storage_index": 1,
+      "min": -24.0,
+      "max": 0.0,
+      "step": 1.0,
+      "default": -12.0,
+      "knob": 255,
+      "flags": 0,
+      "display_code": 131
+    },
+    {
+      "name": "Dry",
+      "storage_index": 2,
+      "min": 0.0,
+      "max": 100.0,
+      "step": 1.0,
+      "default": 50.0,
+      "knob": 255,
+      "flags": 0,
+      "display_code": 21
+    },
+    {
+      "name": "H-VOL",
+      "storage_index": 3,
+      "min": 0.0,
+      "max": 100.0,
+      "step": 1.0,
+      "default": 50.0,
+      "knob": 255,
+      "flags": 0,
+      "display_code": 21
+    },
+    {
+      "name": "L-VOL",
+      "storage_index": 4,
+      "min": 0.0,
+      "max": 100.0,
+      "step": 1.0,
+      "default": 50.0,
+      "knob": 255,
+      "flags": 0,
+      "display_code": 21
+    }
+  ]
+}

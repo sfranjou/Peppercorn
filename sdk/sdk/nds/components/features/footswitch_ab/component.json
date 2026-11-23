@@ -1,0 +1,8 @@
+{
+  "abi": 3,
+  "id": "footswitch_ab",
+  "sources": ["footswitch_ab_main.c"],
+  "callbacks": {"tick": "footswitch_ab_tick", "event": "footswitch_ab_event", "get": "footswitch_ab_get", "set": "footswitch_ab_set"},
+  "host": {"selector": 116, "set_bytes": 18, "max_reply_bytes": 38},
+  "resources": {"state_bytes": 32, "stack_bytes": 448, "tick_us": 100}
+}

@@ -1,0 +1,276 @@
+{
+ "firmware": "Valeton GP-50 V1.1.0 region c (decoded, base 0x4000)",
+ "stock_c_sha256": "9c0b735e945fce6f9aceee8b0639cb5411486105f1e5ee78003af127aa9aef85",
+ "generator": "scripts/build_retained_routines.py",
+ "note": "Footprint = listing instruction bytes + PC-relative literal words. Contracts are recovered evidence, not vendor documentation.",
+ "routines": [
+  {
+   "entry": "0x45f8",
+   "footprint": [
+    [
+     "0x45f8",
+     "0x4602"
+    ],
+    [
+     "0x4604",
+     "0x4614"
+    ]
+   ],
+   "bytes": 26,
+   "sha256": "efd3f2035a79196013eeea312d3e07eb4dc0f96b7ca5211da2002a96c460cef3",
+   "signature": "runtime_literals() -> r0 heap base, r1 stack top, r2/r3 heap limit",
+   "context": "boot (45c4 runtime entry)",
+   "effects": "none; leaf returning 4 literals (4604..4610)",
+   "notes": "MOD031 changes literal 4604 heap base 20003ae8->20003ce8",
+   "evidence": "ARM_ARCHITECTURE.md; work/resource_transactions/heap_carve_verification.json"
+  },
+  {
+   "entry": "0x4634",
+   "footprint": [
+    [
+     "0x4634",
+     "0x4692"
+    ]
+   ],
+   "bytes": 94,
+   "sha256": "70391d886c94ab4570432798ca6a373476c2d8801b7674e8d2cd706e2c52a4eb",
+   "signature": "malloc(size) -> ptr or 0",
+   "context": "foreground (boot directory init)",
+   "effects": "allocates from heap with 4B size header",
+   "notes": "no free path observed for directory allocations",
+   "evidence": "RESOURCE_MANAGER.md lifecycle evidence"
+  },
+  {
+   "entry": "0x4872",
+   "footprint": [
+    [
+     "0x4872",
+     "0x4960"
+    ]
+   ],
+   "bytes": 238,
+   "sha256": "040a233df266e7cb649d2c6c8a695f6e1be7c69f83df17d3af7c023ace348bc8",
+   "signature": "copy(dest r0, src r1, bytes r2)",
+   "context": "any; leaf, no stack frame",
+   "effects": "byte/word copy",
+   "notes": "used by loader, tuner, link FIFO, serializer",
+   "evidence": "slot_writer_audit.json"
+  },
+  {
+   "entry": "0x4960",
+   "footprint": [
+    [
+     "0x4960",
+     "0x49a4"
+    ]
+   ],
+   "bytes": 68,
+   "sha256": "259290c6ec628f49b5e96ab96c2ec07a4c2750f2bb9b9d6cac47330c190c8118",
+   "signature": "clear(dest r0, bytes r1)",
+   "context": "any; leaf",
+   "effects": "zero-fill",
+   "notes": "callers 5328 and 638a only",
+   "evidence": "slot_writer_audit.json"
+  },
+  {
+   "entry": "0x49a4",
+   "footprint": [
+    [
+     "0x49a4",
+     "0x49f2"
+    ]
+   ],
+   "bytes": 78,
+   "sha256": "a80dedbaf7c5a73d59c71b771e348e7607e5b7fca998cf9dcf153421a2eaceb9",
+   "signature": "memset0(dest r0, bytes r1)",
+   "context": "any; leaf",
+   "effects": "zero-fill",
+   "notes": "12 direct callers, none in slot range except 8fe8",
+   "evidence": "slot_writer_audit.json"
+  },
+  {
+   "entry": "0x4a3c",
+   "footprint": [
+    [
+     "0x4692",
+     "0x46e0"
+    ],
+    [
+     "0x4a3c",
+     "0x4a9a"
+    ],
+    [
+     "0x4ac2",
+     "0x4af6"
+    ]
+   ],
+   "bytes": 224,
+   "sha256": "8dec367068260984bdc9477f5f8fc409649d7e2be5b0d8859c5ec8174eac2ac9",
+   "signature": "heap_init(base, limit, 0, limit)",
+   "context": "boot, before main 942a",
+   "effects": "initializes allocator state at 20003a8c over [base,limit)",
+   "notes": "single-heap allocator; only canonical malloc caller is 5274",
+   "evidence": "verify_resource_heap_carve.py"
+  },
+  {
+   "entry": "0x5274",
+   "footprint": [
+    [
+     "0x5274",
+     "0x52fe"
+    ],
+    [
+     "0x5300",
+     "0x5308"
+    ]
+   ],
+   "bytes": 146,
+   "sha256": "573306e5e64b0cb80fc5e5ab94870cba90f2355a54bbaf9bf5e4cf53f588f5f4",
+   "signature": "directory_init(g_base=0x14000) -> 0 ok",
+   "context": "boot (65d0)",
+   "effects": "mallocs header and per-group tables, translates record offsets to 0x14000+off; header ptr at 20001750",
+   "notes": "11 groups; 102 models in MOD030",
+   "evidence": "verify_resource_heap_carve.py"
+  },
+  {
+   "entry": "0x5328",
+   "footprint": [
+    [
+     "0x5328",
+     "0x53a4"
+    ]
+   ],
+   "bytes": 124,
+   "sha256": "ad5aa1ecdfba100d9258df4df5e7a69236f6c2a4622a391f6a783efb48487e9a",
+   "signature": "load_group_record(group r0, model r1, ctx r2) -> 0 or -1",
+   "context": "foreground reload window (effects-active cleared; single core)",
+   "effects": "clears ctx[1] bytes at ctx[0], copies record primary (word0/word1) and secondary; stores record ptr at 200028a8[group]; last group raw-copied and returns -1",
+   "notes": "model>=count -> model 0. MOD031 hooks tail at 5392 (6B)",
+   "evidence": "DSP_LOADER.md; verify_resident_candidate.py"
+  },
+  {
+   "entry": "0x53b4",
+   "footprint": [
+    [
+     "0x53b4",
+     "0x53d0"
+    ]
+   ],
+   "bytes": 28,
+   "sha256": "9ee002879cf23b2db3366b951c410b00a6e64f8e51b191eac93f0ef8d2fde2b4",
+   "signature": "init_group(group r0, args r1) -> 0",
+   "context": "foreground after load",
+   "effects": "calls active record callback+16 with (params, ...); discards its return",
+   "notes": "no init-failure channel",
+   "evidence": "lifecycle_evidence.json"
+  },
+  {
+   "entry": "0x53d0",
+   "footprint": [
+    [
+     "0x53d0",
+     "0x53fe"
+    ],
+    [
+     "0x5400",
+     "0x5404"
+    ]
+   ],
+   "bytes": 50,
+   "sha256": "f12bc6ee158d37322c8dec2317431e0e85a6bb4d54b237bba27c5077dab1e713",
+   "signature": "process_group(...)",
+   "context": "PendSV audio block",
+   "effects": "checks active record, calls callback+20",
+   "notes": "bypass passed to callback; not a lifecycle boundary",
+   "evidence": "lifecycle_evidence.json"
+  },
+  {
+   "entry": "0x6584",
+   "footprint": [
+    [
+     "0x6584",
+     "0x65d0"
+    ]
+   ],
+   "bytes": 76,
+   "sha256": "042efcb3ee2fad213c346844838b15d4ca20b977722e0c06ec65cd0869f66966",
+   "signature": "effect_initialize_group(group r0) -> 0",
+   "context": "foreground (reload tick 20000f42)",
+   "effects": "builds params ptr (C+0x1a0+32*group) and beat period, calls 53b4",
+   "notes": "groups 4/9 special beat source",
+   "evidence": "ARM_SYNC_PREPARATION.md"
+  },
+  {
+   "entry": "0x662c",
+   "footprint": [
+    [
+     "0x662c",
+     "0x669c"
+    ]
+   ],
+   "bytes": 112,
+   "sha256": "1ad2eb58c61ace0d02a90382f36fb64de02963665fe2bcc991a2b20788273223",
+   "signature": "effect_load_group(group r0, force r1) -> 0",
+   "context": "foreground (reload tick 20000f3c)",
+   "effects": "selects model, calls 5328 (and 5328(10,...) for auxiliary)",
+   "notes": "skips load when model unchanged and force==0",
+   "evidence": "ARM_SYNC_PREPARATION.md"
+  },
+  {
+   "entry": "0x6bf0",
+   "footprint": [
+    [
+     "0x6bf0",
+     "0x6c10"
+    ],
+    [
+     "0x6c14",
+     "0x6c18"
+    ]
+   ],
+   "bytes": 36,
+   "sha256": "c4dc18dda5ea4fd463c137cfc93964e9dac59f562c79f58dba4273b18265965d",
+   "signature": "normalizer(selector r0, ...)",
+   "context": "PendSV measured-interval path via RAM veneer 200000fa",
+   "effects": "updates load proxies",
+   "notes": "MOD030 wraps via copied veneer e7ce",
+   "evidence": "ARM_BLOCK_TELEMETRY.md"
+  },
+  {
+   "entry": "0x8d10",
+   "footprint": [
+    [
+     "0x8d10",
+     "0x8d50"
+    ]
+   ],
+   "bytes": 64,
+   "sha256": "ba57c5a3abedd65bb9ee971331771bbd3e1388c8549156fcade419aa074f536a",
+   "signature": "serialize_reply(buf r0, len r1)",
+   "context": "foreground link dispatch with exact incoming PRIMASK",
+   "effects": "frames and queues a link reply (<=128B inner)",
+   "notes": "MOD023 shrank its local frame 2052->132 B (8d12/8d4a); MOD030 telemetry reply path",
+   "evidence": "ARM_BLOCK_TELEMETRY.md; work/custom_images/mod023_reply_stack/REVIEW.md"
+  },
+  {
+   "entry": "0x8fe8",
+   "footprint": [
+    [
+     "0x8fe8",
+     "0x902e"
+    ],
+    [
+     "0x9030",
+     "0x903c"
+    ]
+   ],
+   "bytes": 82,
+   "sha256": "6ef3d2a5d22e5450065f26aac4f4c49a29c51c3f11bb2a6be7a6308ef032aa99",
+   "signature": "builtin_tuner_enter(s0 float)",
+   "context": "foreground (indirect caller)",
+   "effects": "clears 200039cc[0x14], all slots 10000000..1001f400, copies builtin tuner (0x4c81 B from 99f8), state 2000178c, tail-calls its init(+0x10)",
+   "notes": "MOD031 hooks 8fea (4B) to retire leases first",
+   "evidence": "lifecycle_evidence.json; verify_resident_candidate.py"
+  }
+ ]
+}

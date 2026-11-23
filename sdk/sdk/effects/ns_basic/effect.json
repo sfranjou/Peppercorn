@@ -1,0 +1,69 @@
+{
+  "name": "Empty",
+  "type_name": "Tone Clone",
+  "group": 9,
+  "public_id": "0x0f000000",
+  "source": "ns_basic.c",
+  "init": "ns_basic_init",
+  "process": "ns_basic_process",
+  "copro": {
+    "module": "program.py"
+  },
+  "parameters": [
+    {
+      "name": "Gain",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 50,
+      "storage_index": 0,
+      "knob": 255,
+      "flags": 0,
+      "display_code": 21
+    },
+    {
+      "name": "VOL",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 50,
+      "storage_index": 1,
+      "knob": 255,
+      "flags": 0,
+      "display_code": 21
+    },
+    {
+      "name": "Bass",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 50,
+      "storage_index": 2,
+      "knob": 255,
+      "flags": 0,
+      "display_code": 21
+    },
+    {
+      "name": "Middle",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 50,
+      "storage_index": 3,
+      "knob": 255,
+      "flags": 0,
+      "display_code": 21
+    },
+    {
+      "name": "Treble",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 50,
+      "storage_index": 4,
+      "knob": 255,
+      "flags": 0,
+      "display_code": 21
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "schema": 1,
+  "reservations": [
+    {
+      "output": "work/custom_images/mod021_audio_half_gain",
+      "version": "M1.1.0U"
+    },
+    {
+      "output": "work/custom_images/mod023_reply_stack",
+      "version": "M1.1.0W"
+    },
+    {
+      "output": "work/custom_images/mod024_arm_chain",
+      "version": "M1.1.0X"
+    },
+    {
+      "output": "work/custom_images/mod025_ui_assignment",
+      "version": "M1.1.0Y"
+    },
+    {
+      "output": "work/custom_images/mod026_ui_assignment",
+      "version": "M1.1.0Z"
+    },
+    {
+      "output": "work/custom_images/mod027_wah_auto",
+      "version": "M1.1.0a"
+    },
+    {
+      "output": "work/custom_images/mod028_processing_meter",
+      "version": "M1.1.0b"
+    },
+    {
+      "output": "work/custom_images/mod029_assignment_ux",
+      "version": "M1.1.0c"
+    },
+    {
+      "output": "work/custom_images/mod030_block_telemetry",
+      "version": "M1.1.0d"
+    },
+    {
+      "output": "work/custom_images/mod031_resident_tail",
+      "version": "M1.1.0e"
+    },
+    {
+      "output": "work/custom_images/mod033_mem_page",
+      "version": "M1.1.0g"
+    },
+    {
+      "output": "work/custom_images/mod034_gr_edit",
+      "version": "M1.1.0h"
+    },
+    {
+      "output": "work/custom_images/mod034_gr_meter",
+      "version": "M1.1.0h"
+    },
+    {
+      "output": "work/custom_images/mod035_gr_meter_drawn",
+      "version": "M1.1.0i"
+    },
+    {
+      "output": "work/custom_images/mod036_admission",
+      "version": "M1.1.0j"
+    },
+    {
+      "output": "work/custom_images/mod037_cpu_pct",
+      "version": "M1.1.0k"
+    },
+    {
+      "output": "work/custom_images/mod038_ring_echo",
+      "version": "M1.1.0l"
+    },
+    {
+      "output": "work/custom_images/mod039_admission_c",
+      "version": "M1.1.0m"
+    },
+    {
+      "output": "work/custom_images/mod040_all_c",
+      "version": "M1.1.0n"
+    },
+    {
+      "output": "work/custom_images/mod041_copro_effects",
+      "version": "M1.1.0o"
+    },
+    {
+      "output": "work/custom_images/mod042_refusal",
+      "version": "M1.1.0p"
+    },
+    {
+      "output": "work/custom_images/mod043_refusal_home",
+      "version": "M1.1.0q"
+    },
+    {
+      "output": "work/custom_images/mod044_copro_admission",
+      "version": "M1.1.0r"
+    },
+    {
+      "output": "work/custom_images/mod045_arm_application",
+      "version": "M1.1.0s"
+    },
+    {
+      "output": "work/custom_images/mod046_reload_veneer",
+      "version": "M1.1.0t"
+    }
+  ]
+}

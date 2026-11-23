@@ -1,0 +1,14 @@
+{
+  "name": "Hard Clip",
+  "type_name": "Distortion",
+  "group": 2,
+  "public_id": "0x0300007e",
+  "source": "hard_clip.c",
+  "init": "hard_clip_init",
+  "process": "hard_clip_process",
+  "copro": {"module": "program.py"},
+  "parameters": [
+    {"name": "Gain", "storage_index": 0, "min": 0.0, "max": 100.0, "step": 1.0, "default": 50.0, "knob": 0, "flags": 0, "display_code": 21},
+    {"name": "VOL", "storage_index": 1, "min": 0.0, "max": 100.0, "step": 1.0, "default": 50.0, "knob": 255, "flags": 0, "display_code": 21}
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "abi": 3,
+  "id": "fs_block",
+  "sources": ["fs_block_main.c"],
+  "callbacks": {"init": "fs_block_init", "event": "fs_block_event", "get": "fs_block_get", "set": "fs_block_set",
+                "status": "fs_block_status", "preset_save": "fs_block_save", "preset_load": "fs_block_load"},
+  "host": {"selector": 121, "set_bytes": 1, "max_reply_bytes": 3},
+  "preset_bytes": 1,
+  "resources": {"state_bytes": 4, "stack_bytes": 128, "tick_us": 0}
+}

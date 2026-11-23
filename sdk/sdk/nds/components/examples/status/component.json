@@ -1,0 +1,8 @@
+{
+  "abi": 1,
+  "id": "status",
+  "sources": ["status_main.c"],
+  "callbacks": {"init": "status_init", "tick": "status_tick", "get": "status_get", "set": null},
+  "host": {"selector": 118, "set_bytes": 0, "max_reply_bytes": 5},
+  "resources": {"state_bytes": 0, "stack_bytes": 32, "tick_us": 10}
+}
