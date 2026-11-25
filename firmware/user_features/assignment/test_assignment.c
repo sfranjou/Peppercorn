@@ -17,11 +17,10 @@ void gp50_test(void) {
     GP50_CHECK(ev(GP50_EVENT_PARA, 0, ED, 1) == 1 && text("Turn parameter knob") && gp50_native.editor_text_kind == GP50_TEXT_PROMPT);
     GP50_CHECK(ev(GP50_EVENT_KNOB, 0, ED, 1) == 1 && text("Selected; DRUM next"));
     GP50_CHECK(ev(GP50_EVENT_DRUM, 0, ED, 1) == 1 && text("Turn destination knob"));
-    GP50_CHECK(ev(GP50_EVENT_KNOB, 1, ED, -1) == 1 && text("Selected; DRUM saves"));
-    GP50_CHECK(ev(GP50_EVENT_DRUM, 0, ED, 1) == 1 && text("Assigned; SAVE preset"));
+    GP50_CHECK(ev(GP50_EVENT_KNOB, 1, ED, -1) == 1 && text("DRUM or EXIT assigns"));
+    GP50_CHECK(ev(GP50_EVENT_BACK, 0, ED, 1) == GP50_PASS && !gp50_native.editor_text_shown);
     GP50_CHECK(gp50_native.assignments.knob[1].valid && gp50_native.assignments.knob[1].block == GP50_AMP &&
                gp50_native.assignments.knob[1].param == 2 && gp50_native.modified && gp50_native.notify_count == 1);   /* 12 71 notice */
-    GP50_CHECK(ev(GP50_EVENT_DRUM, 0, ED, 1) == 1 && !gp50_native.editor_text_shown);   /* DRUM leaves */
     /* Home: knob 2 drives AMP parameter 3; its tile shows name, value and position. */
     float before = gp50_native.block[GP50_AMP].param[2].value;
     GP50_CHECK(ev(GP50_EVENT_KNOB, 1, HOME, 3) == 1 && gp50_native.block[GP50_AMP].param[2].value == before + 3);
@@ -63,7 +62,7 @@ void gp50_test(void) {
     GP50_CHECK(ev(GP50_EVENT_KNOB, 0, ED, 1) == 0);                   /* knobs set B: passes to the editor */
     gp50_native.block[GP50_AMP].param[2].value = 80;
     GP50_CHECK(ev(GP50_EVENT_FOOTSWITCH, GP50_FOOTSWITCH_RIGHT, ED, 1) == 1 && text("Set B, FS1 again"));   /* other switch: ignored */
-    GP50_CHECK(ev(GP50_EVENT_FOOTSWITCH, GP50_FOOTSWITCH_LEFT, ED, 1) == 1 && text("Assigned; SAVE preset"));
+    GP50_CHECK(ev(GP50_EVENT_FOOTSWITCH, GP50_FOOTSWITCH_LEFT, ED, 1) == 1 && text("Assigned") && !text("SAVE preset"));
     GP50_CHECK(gp50_native.assignments.footswitch[0].valid && gp50_native.assignments.footswitch[0].a == 50 &&
                gp50_native.assignments.footswitch[0].b == 80);
     ev(GP50_EVENT_BACK, 0, ED, 1);
@@ -76,7 +75,7 @@ void gp50_test(void) {
         float current = v->value;
         ev(GP50_EVENT_DRUM_HOLD, 0, ED, 1); ev(GP50_EVENT_PARA, 0, ED, 1); ev(GP50_EVENT_KNOB, 0, ED, 1);
         unsigned fs = j & 1;
-        GP50_CHECK(ev(GP50_EVENT_FOOTSWITCH, fs, ED, 1) == 1 && text("Assigned; SAVE preset"));
+        GP50_CHECK(ev(GP50_EVENT_FOOTSWITCH, fs, ED, 1) == 1 && text("Assigned") && !text("SAVE preset"));
         GP50_CHECK(gp50_native.assignments.footswitch[fs].a == current &&
                    gp50_native.assignments.footswitch[fs].b == (current == v->min ? v->max : v->min));
         GP50_CHECK(v->value == current);

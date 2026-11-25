@@ -44,10 +44,27 @@ int main(void) {
         for (int b = 0; b < 500; b++) block(0.0f, p, &on);
         assert(block(0.5f, p, &on) < 0.05f);
     }
-    /* bypass: untouched */
-    for (int f = 0; f < 128; f++) buf[f] = 0.3f;
+    /* Reattack over a tail well above the released silence gate. */
+    p[1] = 50;
+    auto_swell_init(p);
+    for (int b = 0; b < 200; b++) block(0.5f, p, &on);
+    for (int b = 0; b < 100; b++) assert(fabsf(block(0.015f, p, &on) - 0.015f) < 1e-5f);
+    assert(block(0.2f, p, &on) < 0.01f);
+    /* Quieter input now triggers at medium Sens, but not at minimum Sens. */
+    const float quiet_pick = 0.010f;
+    auto_swell_init(p);
+    for (int b = 0; b < 100; b++) m = block(quiet_pick, p, &on);
+    assert(fabsf(m - quiet_pick) < 1e-5f);
+    p[1] = 0;
+    auto_swell_init(p);
+    for (int b = 0; b < 100; b++) assert(block(quiet_pick, p, &on) == 0.0f);
+    /* Asymmetric bypass is bit for bit unchanged; switching back rearms. */
+    for (int b = 0; b < 100; b++) block(0.5f, p, &on);
+    float dry[128];
+    for (int f = 0; f < 128; f++) dry[f] = buf[f] = f & 1 ? 0.3f : -0.25f;
     auto_swell_process(buf, 64, p, 0, &off, 0, 0);
-    for (int f = 0; f < 128; f++) assert(buf[f] == 0.3f);
+    assert(memcmp(dry, buf, sizeof dry) == 0);
+    assert(block(0.5f, p, &on) < 0.05f);
     /* VOL 100 doubles */
     float q[8] = {10, 50, 0, 100, 0, 0, 0, 0};
     auto_swell_init(q);

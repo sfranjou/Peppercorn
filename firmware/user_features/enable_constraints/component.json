@@ -1,0 +1,8 @@
+{
+  "abi": 3,
+  "id": "enable_constraints",
+  "sources": ["enable_constraints_main.c"],
+  "callbacks": {"get": "enable_constraints_get"},
+  "host": {"selector": 126, "set_bytes": 0, "max_reply_bytes": 11},
+  "resources": {"state_bytes": 0, "stack_bytes": 192, "tick_us": 0}
+}

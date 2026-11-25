@@ -63,7 +63,7 @@ firmware/build_custom.sh "/path/to/Valeton GP-50 V1.1.0.bin" \
 
 Add more feature or effect folders at the end of the command. A folder with the same name as a bundled feature or effect replaces it in the build. The script prints the image path and SHA-256. `Z1.1.0a` is the version shown on the pedal.
 
-To rebuild this release, run `firmware/build.sh` with the same first four arguments. The expected SHA-256 is `33963b31a168a4e827fffc22f50d7deef1f2c01c582c24686b8681718a005d70`.
+This branch is a firmware QA preview. See [the A1.1.0j preview notes](QA_PREVIEW.md) for the build, review status, and remaining pedal checks. The installer still serves A1.1.0i.
 
 ## What's in this repository
 

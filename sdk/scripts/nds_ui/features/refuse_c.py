@@ -63,7 +63,7 @@ def c_sources(cfg):
 def c_entries(cfg):
     # nds_refuse_home is called only from mem_page.c; it must be a root here so the canonical module
     # hash (refuse_c compiled alone, gc-sections) covers it (found 2026-10-20 by a mutation that the cache missed).
-    return C_ENTRIES + (('nds_refuse_home',) if (cfg or {}).get('refusal_home') else ()) + (('gp50_link_filter',) if _force() else ())
+    return C_ENTRIES + (('gp50_enable_constraints',) if 'GP50_FEATURE_ENABLE_CONSTRAINTS=1' in (cfg or {}).get('c_defines', ()) else ()) + (('nds_refuse_home',) if (cfg or {}).get('refusal_home') else ()) + (('gp50_link_filter',) if _force() else ())
 
 
 CODE = {}

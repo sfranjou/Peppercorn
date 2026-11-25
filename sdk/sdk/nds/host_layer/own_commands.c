@@ -64,7 +64,11 @@ uint32_t own_identity(uint32_t ctx, const StockIo *io) {
         if (!c) end = 1;
         IO_W8(io, f + 3 + i, c);
     }
+#ifdef GP50_FEATURE_ENABLE_CONSTRAINTS
+    io_w32(io, f + 19, OWN_FEATURES | (1u << 14));
+#else
     io_w32(io, f + 19, OWN_FEATURES);
+#endif
     return STOCK_CALL(io, FRAME_SEND, f, OWN_IDENTITY_FRAME, ctx);
 }
 

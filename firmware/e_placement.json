@@ -1,0 +1,230 @@
+{
+  "schema": 1,
+  "allocations": [
+    {
+      "object": "gp50_services.o",
+      "address": 1694120,
+      "end": 1698044
+    },
+    {
+      "object": "assign_map.o",
+      "address": 1701804,
+      "end": 1703880
+    },
+    {
+      "object": "enable_constraints_main.o",
+      "address": 1703880,
+      "end": 1703912
+    },
+    {
+      "object": "gp50_features.o",
+      "address": 1723460,
+      "end": 1726944
+    },
+    {
+      "object": "legacy_ui_tables.o",
+      "address": 1726944,
+      "end": 1728996
+    },
+    {
+      "object": "home_meter.o",
+      "address": 1728996,
+      "end": 1731012
+    },
+    {
+      "object": "components_registry.o",
+      "address": 1731012,
+      "end": 1733016
+    },
+    {
+      "object": "admission.o",
+      "address": 1733016,
+      "end": 1734796
+    },
+    {
+      "object": "fs_ab_target.o",
+      "address": 1734796,
+      "end": 1736564
+    },
+    {
+      "object": "nds_telemetry.o",
+      "address": 1736564,
+      "end": 1738252
+    },
+    {
+      "object": "nds_editor.o",
+      "address": 1738252,
+      "end": 1739792
+    },
+    {
+      "object": "refuse.o",
+      "address": 1739792,
+      "end": 1741292
+    },
+    {
+      "object": "wah_auto.o",
+      "address": 1741292,
+      "end": 1742308
+    },
+    {
+      "object": "footswitch_ab_main.o",
+      "address": 1769748,
+      "end": 1771076
+    },
+    {
+      "object": "fs_ab_pedal.o",
+      "address": 1771076,
+      "end": 1772228
+    },
+    {
+      "object": "fs_ab_metadata.o",
+      "address": 1772228,
+      "end": 1773380
+    },
+    {
+      "object": "assign_editor.o",
+      "address": 1773380,
+      "end": 1774504
+    },
+    {
+      "object": "assign_store.o",
+      "address": 1774504,
+      "end": 1775516
+    },
+    {
+      "object": "capture_status.o",
+      "address": 1775516,
+      "end": 1776444
+    },
+    {
+      "object": "assign_home.o",
+      "address": 1776444,
+      "end": 1777368
+    },
+    {
+      "object": "fs_ab_host.o",
+      "address": 1777368,
+      "end": 1778248
+    },
+    {
+      "object": "auto_wah_main.o",
+      "address": 1778248,
+      "end": 1779108
+    },
+    {
+      "object": "diagnostics.o",
+      "address": 1779108,
+      "end": 1779956
+    },
+    {
+      "object": "own_catalog_entries.o",
+      "address": 1779956,
+      "end": 1780736
+    },
+    {
+      "object": "fs_ab_ui.o",
+      "address": 1780736,
+      "end": 1781488
+    },
+    {
+      "object": "fs_ab_persistence.o",
+      "address": 1781488,
+      "end": 1782192
+    },
+    {
+      "object": "mem_page.o",
+      "address": 1782192,
+      "end": 1782748
+    },
+    {
+      "object": "dst_capture_link.o",
+      "address": 1782748,
+      "end": 1783256
+    },
+    {
+      "object": "fs_ab_preset_own.o",
+      "address": 1783256,
+      "end": 1783704
+    },
+    {
+      "object": "fs_ab_stock_adapter.o",
+      "address": 1783704,
+      "end": 1784120
+    },
+    {
+      "object": "stock_gr_meter_main.o",
+      "address": 1784120,
+      "end": 1784532
+    },
+    {
+      "object": "gr_meter_main.o",
+      "address": 1784532,
+      "end": 1784912
+    },
+    {
+      "object": "cpu_load_main.o",
+      "address": 1784912,
+      "end": 1785236
+    },
+    {
+      "object": "fs_ab_footswitch_ab.o",
+      "address": 1785236,
+      "end": 1785552
+    },
+    {
+      "object": "capture_link.o",
+      "address": 1785552,
+      "end": 1785852
+    },
+    {
+      "object": "fs_ab_endpoint.o",
+      "address": 1785852,
+      "end": 1786144
+    },
+    {
+      "object": "tap_pedal.o",
+      "address": 1786144,
+      "end": 1786432
+    },
+    {
+      "object": "meter_home.o",
+      "address": 1786432,
+      "end": 1786676
+    },
+    {
+      "object": "assign_percent.o",
+      "address": 1786676,
+      "end": 1786904
+    },
+    {
+      "object": "nds_dst_names.o",
+      "address": 1786904,
+      "end": 1787128
+    },
+    {
+      "object": "drum_control_main.o",
+      "address": 1787128,
+      "end": 1787300
+    },
+    {
+      "object": "components_host.o",
+      "address": 1787300,
+      "end": 1787472
+    },
+    {
+      "object": "own_parse_entry.o",
+      "address": 1787472,
+      "end": 1787620
+    },
+    {
+      "object": "fs_ab_effect_set_entry.o",
+      "address": 1787620,
+      "end": 1787740
+    },
+    {
+      "object": "assignment_main.o",
+      "address": 1787740,
+      "end": 1791512
+    }
+  ]
+}

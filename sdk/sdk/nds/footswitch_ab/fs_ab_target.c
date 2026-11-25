@@ -187,6 +187,32 @@ void gp50_fs_ab_press(uint32_t index) {
     nds_adm_footswitch(index);
 }
 
+#ifdef GP50_FEATURE_FOOTSWITCH_AB
+/* The stock press renders this after handling the event. Read the actual value,
+ * so a failed toggle cannot leave the LED claiming the other endpoint. */
+static uint32_t fs_ab_led_bits(float f) {
+    union { float f; uint32_t u; } bits = { .f = f };
+    return bits.u << 1 ? bits.u : 0u;  /* treat -0 and +0 alike */
+}
+uint32_t gp50_fs_ab_led_mode(uint32_t index) {
+    gp50_assignments a;
+    if (index < GP50_FOOTSWITCHES && !gp50_assignments_get(&a) && a.preset != GP50_NONE &&
+        !(a.blocked & (1u << index))) {
+        const gp50_footswitch_binding *b = &a.footswitch[index];
+        float now;
+        if (b->valid && gp50_block_model(b->block) == b->model &&
+            !gp50_param_get(b->block, b->param, &now)) {
+            const uint32_t actual = fs_ab_led_bits(now);
+            /* Use the same two steady color masks as stock Stomp mode.
+             * The refresh paths recognize 5 and 6 as the valid pair. */
+            if (actual == fs_ab_led_bits(b->a)) return 5;
+            if (actual == fs_ab_led_bits(b->b)) return 6;
+        }
+    }
+    return STOCK_CALL(IO, 0x45906u, index);
+}
+#endif
+
 /* Save barrier for the knob commands (`11 71`) and the host status. */
 uint32_t gp50_fs_ab_metadata_fault(void) { return state()->metadata_fault && state()->owner == current(); }   /* flag first: no stock call unless faulted */
 

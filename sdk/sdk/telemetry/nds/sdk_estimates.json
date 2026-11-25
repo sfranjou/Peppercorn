@@ -16,10 +16,10 @@
    "effect": "auto_swell",
    "group": 1,
    "public_id": "0x01000070",
-   "estimate": 27,
-   "instructions_mean": 2677.0,
+   "estimate": 36,
+   "instructions_mean": 3511.6,
    "factor": 1e-05,
-   "sources_sha256": "de858862ba696436e01d704fa79faa33ed3396842d108f51c411684c99425087"
+   "sources_sha256": "417b23c78f8d6c5b03db2e6b7df65f5a7ef1b1089313b8891405cf9dc43ef956"
   },
   {
    "effect": "chop_trem",
