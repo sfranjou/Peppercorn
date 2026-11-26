@@ -1,6 +1,8 @@
 # Peppercorn release notes
 
-## A1.1.0j — firmware preview
+## Peppercorn v0.2.0-rc.1
+
+Firmware preview for v0.2.0. The pedal’s About screen shows **A1.1.0j**.
 
 ### On the pedal
 
@@ -11,7 +13,7 @@
 ### In the web editor
 
 - Parameter rows show current home screen knob and Stomp A/B footswitch assignments and let you edit either type.
-- With A1.1.0j, the editor can show why a block cannot be enabled, such as CPU load or an incompatible capture combination. After sending an enable change, the editor reads the block state back from the pedal.
+- With the new firmware, the editor can show why a block cannot be enabled, such as CPU load or an incompatible capture combination. After sending an enable change, the editor reads the block state back from the pedal.
 
 ### Availability
 
