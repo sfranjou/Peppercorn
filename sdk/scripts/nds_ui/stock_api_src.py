@@ -605,3 +605,12 @@ ENTRIES += [("hook_about_text_append",0x1f088,H,"last jal 0xd0da4 (bounded strca
 ENTRIES += [("hook_settings_table_register",0x1f23c,H,"window-9 open: jal 0x177aa (handler table 0xd5b50, 9 entries); the feature tile wrapper registers its own table",'LAB_NOTEBOOK 2026-11-06 (Global settings window 9: open 0x1f22e, handler table 0xd5b50, item loop 0x1f5b8..0x1f83e)'),
  ("hook_settings_item_loop",0x1f60e,H,"window-9 item loop: beqc r11,#2 (page 3 skips slot 4); replaced by j 0x1f808 so every page builds 4 tiles",'LAB_NOTEBOOK 2026-11-06 (Global settings window 9: open 0x1f22e, handler table 0xd5b50, item loop 0x1f5b8..0x1f83e)'),
  ("hook_settings_item_label",0x1f812,H,"window-9 item loop: jal 0x15f0c (UI text 0x43 + tile index) for each tile label",'LAB_NOTEBOOK 2026-11-06 (Global settings window 9: open 0x1f22e, handler table 0xd5b50, item loop 0x1f5b8..0x1f83e)')]
+
+# Stock Stomp LED mode reads. Other users of the mode accessor stay unchanged.
+ENTRIES += [('hook_stomp_led_%05x' % a, a, H,
+             'jal 0x45906(index): stock LED mode read for ' + route,
+             'analysis/firmware/MOD175_QA_REVIEW.md; stock V1.1.0 call sites')
+            for a, route in ((0x47474, 'press'), (0x4728c, 'preset apply A'),
+                             (0x472a2, 'preset apply B'), (0x474c8, 'mode entry A'),
+                             (0x474d0, 'mode entry B'), (0x47534, 'refresh A'),
+                             (0x4753c, 'refresh B'))]

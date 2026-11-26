@@ -27,7 +27,7 @@ Build the modified firmware in your browser using your copy of Valeton’s V1.1.
 2. Back up your presets.
 3. Open the [installer](https://sfranjou.com/gp50/installer/), drop the V1.1.0 file on the page and download the result. The page checks your file first, and the finished firmware afterwards.
 4. In Valeton Suite, start a firmware update and select the file you downloaded. Keep the pedal connected until the update finishes.
-5. In Global settings → About, check that the Version screen shows A1.1.0i.
+5. In Global settings → About, check that the Version screen matches the on-screen version listed for the release you chose in the installer.
 
 ## Can this brick the pedal?
 
@@ -63,7 +63,7 @@ firmware/build_custom.sh "/path/to/Valeton GP-50 V1.1.0.bin" \
 
 Add more feature or effect folders at the end of the command. A folder with the same name as a bundled feature or effect replaces it in the build. The script prints the image path and SHA-256. `Z1.1.0a` is the version shown on the pedal.
 
-To rebuild this release, run `firmware/build.sh` with the same first four arguments. The expected SHA-256 is `33963b31a168a4e827fffc22f50d7deef1f2c01c582c24686b8681718a005d70`.
+To rebuild the **Peppercorn v0.2.0** firmware (About: **A1.1.0j**), run `firmware/build.sh` with the same first four arguments. See the [release notes](RELEASE_NOTES.md#peppercorn-v020-on-screen-version-a110j) and [build checksum](QA_PREVIEW.md#reproduce-the-reviewed-firmware). The bundled browser installer offers **v0.2.0** and keeps **v0.1.0** available.
 
 ## What's in this repository
 
@@ -71,6 +71,19 @@ To rebuild this release, run `firmware/build.sh` with the same first four argume
 - `sdk/`: the SDK
 - `site/`: web tools, JavaScript API (`site/gp50/`)
 - `trainer/`: NAM player + data service sources
+
+## Preparing a release
+
+Make changes to the shared editor and installer here under `site/`.
+For a release, update the root release notes, copy them into `site/`, and
+put the corresponding patch and entry first in `site/installer/releases.json`.
+Verify that the installer reconstructs the reviewed image from the official
+stock file before tagging the release. Use the Peppercorn SemVer for the tag
+and list the pedal’s on-screen version separately.
+
+The website update is manual. From a clean checkout of the website, use its
+`scripts/sync-peppercorn.sh` to preview and import the published tag.
+The website records the exact commit it imported.
 
 ## Credits and license
 

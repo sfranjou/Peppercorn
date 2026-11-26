@@ -3,7 +3,7 @@
  * Effect editor: hold DRUM opens the assignment menu ("Assign control" / "Clear assignment" / "Clear all" when the
  * stored data is damaged); EXIT closes it, the encoder moves the cursor, PARA selects.
  * "Assign control": turn the knob of the parameter to assign (prompt 1 -> 4), DRUM, then turn the destination Stomp
- * knob (prompt 2 -> 5) and DRUM to save it, or press FS A/B: the current value becomes A, set the value B with the
+ * knob (prompt 2 -> 5) and DRUM or EXIT to assign it, or press FS A/B: the current value becomes A, set the value B with the
  * knob and press the same footswitch again (prompts 6/7). Two-value parameters assign
  * immediately with the opposite endpoint as B. Damaged data: prompt 8.
  * Home (Stomp mode): an assigned knob drives its parameter and its tile shows the parameter name, value and position.
@@ -18,11 +18,11 @@ typedef struct {
     float value_a;
     gp50_assignments seen;      /* CONFIRM: the binding as picked, re-checked before clearing */
     char text[128];             /* menu page text (kept here, not on the stack) */
-    gp50_assignments work;      /* the page's own copy (kept here, not on the stack) */
+    gp50_assignments work;      /* editor snapshot and commit scratch, off the event stack */
 } State;
 
-static const char *const PROMPT[9] = { 0, "Turn parameter knob", "Turn destination knob", "Assigned; SAVE preset",
-                                       "Selected; DRUM next", "Selected; DRUM saves", "Set B, FS1 again",
+static const char *const PROMPT[9] = { 0, "Turn parameter knob", "Turn destination knob", "Assigned",
+                                       "Selected; DRUM next", "DRUM or EXIT assigns", "Set B, FS1 again",
                                        "Set B, FS2 again", "Bad data: reset FS" };
 static const char *const BLOCK[GP50_BLOCKS] = { "NR", "PRE", "DST", "AMP", "CAB", "EQ", "MOD", "DLY", "RVB", "NS" };
 static const char *const PREFIX[GP50_BLOCKS] = { "NR ", "PRE ", "OD ", "AMP ", "CAB ", "EQ ", "MOD ", "DLY ", "RVB ", "NAM " };
@@ -51,7 +51,7 @@ static void asg_page(State *s) {
         if (a.fault) n = asg_put(t, n, size, s->cursor == 2 ? "> Clear all (bad data)\n" : "  Clear all (bad data)\n");
         n = asg_put(t, n, size, "PARA: select\nEXIT: cancel");
     } else if (s->phase == PICK) n = asg_put(t, n, size, "Clear assignment\nTurn Stomp knob\nor press FS A/B\nEXIT: cancel");
-    else if (s->phase == DONE) n = asg_put(t, n, size, "Assignment cleared\nSAVE preset\nEXIT: close");
+    else if (s->phase == DONE) n = asg_put(t, n, size, "Assignment cleared\nEXIT: close");
     else if (s->phase == RECOVER) n = asg_put(t, n, size, "Clear ALL assignments?\nKnobs and FS A/B\nPARA: clear all\nEXIT: cancel");
     else if (s->phase == CHANGED) n = asg_put(t, n, size, "Assignment changed\nPlease select again\nEXIT: close");
     else {
@@ -110,12 +110,12 @@ static void asg_confirm(State *s) {
     asg_page(s);
 }
 static uint32_t asg_commit_knob(State *s) {
-    gp50_assignments a;
-    if (gp50_preset_number() != s->owner || s->dest >= 3 || gp50_assignments_get(&a) || a.fault) return 0;
+    gp50_assignments *a = &s->work;
+    if (gp50_preset_number() != s->owner || s->dest >= 3 || gp50_assignments_get(a) || a->fault) return 0;
     if (gp50_block_model(s->block) != s->model || s->param >= gp50_param_count(s->block)) return 0;
-    a.preset = s->owner;
-    a.knob[s->dest] = (gp50_knob_binding){ 1, s->block, s->param, 0, s->model };
-    if (gp50_assignments_set(&a)) return 0;
+    a->preset = s->owner;
+    a->knob[s->dest] = (gp50_knob_binding){ 1, s->block, s->param, 0, s->model };
+    if (gp50_assignments_set(a)) return 0;
     gp50_preset_mark_modified();
     asg_notify71();
     return 1;
@@ -138,7 +138,19 @@ static uint32_t asg_editor(State *s, const gp50_event *e) {
         s->owner = (uint8_t)gp50_preset_number(); s->cursor = 0; s->phase = MENU; asg_page(s); return GP50_CONSUMED;
     }
     if (p == IDLE) return GP50_PASS;                         /* the editor's own behaviour (DRUM: drum_control) */
-    if (e->kind == GP50_EVENT_BACK) { asg_leave(s); return GP50_CONSUMED; }
+    if (e->kind == GP50_EVENT_BACK) {
+        if (p == PICK_DEST && s->dest < GP50_KNOBS) {
+            if (!asg_commit_knob(s)) {
+                s->phase = CHANGED;
+                asg_page(s);
+                return GP50_CONSUMED;
+            }
+            asg_leave(s);
+            return GP50_PASS;    /* use the editor's normal route back home */
+        }
+        asg_leave(s);
+        return p == ASSIGNED ? GP50_PASS : GP50_CONSUMED;
+    }
     if (p >= MENU) {
         gp50_assignments a; (void)gp50_assignments_get(&a);
         if (p == MENU && e->kind == GP50_EVENT_ENCODER) {

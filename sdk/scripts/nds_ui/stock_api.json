@@ -12351,6 +12351,62 @@
    "signature": "window-9 item loop: jal 0x15f0c (UI text 0x43 + tile index) for each tile label",
    "evidence": "LAB_NOTEBOOK 2026-11-06 (Global settings window 9: open 0x1f22e, handler table 0xd5b50, item loop 0x1f5b8..0x1f83e)",
    "stock_bytes": "49ffb37df0814410"
+  },
+  {
+   "name": "hook_stomp_led_47474",
+   "kind": "hook_site",
+   "address": "0x47474",
+   "signature": "jal 0x45906(index): stock LED mode read for press",
+   "evidence": "analysis/firmware/MOD175_QA_REVIEW.md; stock V1.1.0 call sites",
+   "stock_bytes": "49fff249f081f101"
+  },
+  {
+   "name": "hook_stomp_led_4728c",
+   "kind": "hook_site",
+   "address": "0x4728c",
+   "signature": "jal 0x45906(index): stock LED mode read for preset apply A",
+   "evidence": "analysis/firmware/MOD175_QA_REVIEW.md; stock V1.1.0 call sites",
+   "stock_bytes": "49fff33df0818400"
+  },
+  {
+   "name": "hook_stomp_led_472a2",
+   "kind": "hook_site",
+   "address": "0x472a2",
+   "signature": "jal 0x45906(index): stock LED mode read for preset apply B",
+   "evidence": "analysis/firmware/MOD175_QA_REVIEW.md; stock V1.1.0 call sites",
+   "stock_bytes": "49fff332f081f101"
+  },
+  {
+   "name": "hook_stomp_led_474c8",
+   "kind": "hook_site",
+   "address": "0x474c8",
+   "signature": "jal 0x45906(index): stock LED mode read for mode entry A",
+   "evidence": "analysis/firmware/MOD175_QA_REVIEW.md; stock V1.1.0 call sites",
+   "stock_bytes": "49fff21f80e08006"
+  },
+  {
+   "name": "hook_stomp_led_474d0",
+   "kind": "hook_site",
+   "address": "0x474d0",
+   "signature": "jal 0x45906(index): stock LED mode read for mode entry B",
+   "evidence": "analysis/firmware/MOD175_QA_REVIEW.md; stock V1.1.0 call sites",
+   "stock_bytes": "49fff21b9ebd9690"
+  },
+  {
+   "name": "hook_stomp_led_47534",
+   "kind": "hook_site",
+   "address": "0x47534",
+   "signature": "jal 0x45906(index): stock LED mode read for refresh A",
+   "evidence": "analysis/firmware/MOD175_QA_REVIEW.md; stock V1.1.0 call sites",
+   "stock_bytes": "49fff1e980e08006"
+  },
+  {
+   "name": "hook_stomp_led_4753c",
+   "kind": "hook_site",
+   "address": "0x4753c",
+   "signature": "jal 0x45906(index): stock LED mode read for refresh B",
+   "evidence": "analysis/firmware/MOD175_QA_REVIEW.md; stock V1.1.0 call sites",
+   "stock_bytes": "49fff1e59ebd9690"
   }
  ]
 }

@@ -102,13 +102,38 @@ static uint32_t refuse_rule(uint32_t mask0, uint32_t mask1, uint32_t og, uint32_
 
 /* The v7 link filter (DST capture with N->S off) lives in dst_capture_link.c (gp50_link_filter, v7-only object). */
 
+/* Return the same reason for the read-only host query and the enable gate. */
+static uint32_t enable_reason(uint32_t group, uint32_t mask, uint32_t *key) {
+ uint32_t next = mask | (1u << group);
+ if (next == mask) return 0;
+#if ADM_CAPTURE_RULES
+ uint32_t v = violation(next, 10u, 0);
+ if (v && !violation(mask, 10u, 0)) {
+  *key = 0xc0000000u | v << 1;
+  return v + 1u;
+ }
+#endif
+ uint32_t u0, u1;
+ uint32_t before = est_of(mask, 10u, 0, &u0), after = est_of(next, 10u, 0, &u1);
+ if (after < ADM_REFUSE || after <= before) return 0;
+ *key = (((after + 9u) / 10u) * 2u | u1) | 0x80000000u;
+ return 1;
+}
+
+#ifdef GP50_FEATURE_ENABLE_CONSTRAINTS
+uint32_t gp50_enable_constraints(uint8_t *reasons) {
+ uint32_t mask = live_mask(), key;
+ for (uint32_t group = 0; group < 10u; group++)
+  reasons[group] = (uint8_t)enable_reason(group, mask, &key);
+ return 10u;
+}
+#endif
+
 uint32_t nds_adm_enable_get(uint32_t group, uint32_t requested) {
- uint32_t cur = enable_get(group);
- if (group < 10u && requested && !cur) {
-  uint32_t m = live_mask(), u0, u1;
-  if (refuse_rule(m, m | 1u << group, 10u, 0)) return requested;
-  uint32_t before = est_of(m, 10u, 0, &u0), after = est_of(m | 1u << group, 10u, 0, &u1);
-  if (refuse(before, after, u1)) return requested;   /* looks unchanged to 0x473f0 */
+ uint32_t cur = enable_get(group), key;
+ if (group < 10u && requested && !cur && enable_reason(group, live_mask(), &key)) {
+  note(key);
+  return requested;   /* looks unchanged to 0x473f0 */
  }
  return cur;
 }

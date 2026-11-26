@@ -20,5 +20,26 @@ DATA = {}
 HOOKS = {}
 
 
+def c_entries(cfg):
+    return C_ENTRIES + (('gp50_fs_ab_led_mode',)
+                        if 'GP50_FEATURE_FOOTSWITCH_AB=1' in (cfg or {}).get('c_defines', ()) else ())
+
+
 def patches(c):
-    return []
+    from ..stock_in_place import bulk_stems
+    if ('GP50_FEATURE_FOOTSWITCH_AB=1' not in c.cfg.get('c_defines', ()) or
+            'ui_footswitch' not in bulk_stems(c.cfg)):
+        return []
+    # These reads supply the stock LED renderer in Stomp mode. The public
+    # stock accessor at 0x4748a remains an unmodified read of switch config.
+    sites = [(0x47474, '49fff249', 'press')]
+    if 'userdata_apply' in bulk_stems(c.cfg):
+        sites += [(0x4728c, '49fff33d', 'preset apply A'), (0x472a2, '49fff332', 'preset apply B'),
+                  (0x474c8, '49fff21f', 'mode entry A'), (0x474d0, '49fff21b', 'mode entry B'),
+                  (0x47534, '49fff1e9', 'refresh A'), (0x4753c, '49fff1e5', 'refresh B')]
+    for site, raw, why in sites:
+        offset = site - 0x10000
+        if c.parent_b[offset:offset + 4] != bytes.fromhex(raw):
+            raise ValueError(f'stock footswitch LED mode call preimage differs: {site:#x}')
+    return [(site, f'jal {c.labels["gp50_fs_ab_led_mode"]:#x}', f'Stomp {why}: render A/B endpoint')
+            for site, _, why in sites]
