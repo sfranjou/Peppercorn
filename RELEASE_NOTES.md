@@ -1,23 +1,18 @@
 # Peppercorn release notes
 
-## Peppercorn v0.2.0-rc.1
-
-Firmware preview for v0.2.0. The pedal’s About screen shows **A1.1.0j**.
+## Peppercorn v0.2.0 (on-screen version A1.1.0j)
 
 ### On the pedal
 
-- **Auto Swell (PRE):** Quieter picks can start a swell, and a distinct pick can start another swell while the previous note is still decaying. Bypass clears the detector so it starts fresh when you turn the effect back on. The four existing controls are unchanged.
-- **Home screen knob assignments:** Press Exit once to accept a complete assignment and leave the editor. The extra save reminder is gone. Use the usual preset Save to keep the assignment after reloading.
-- **Stomp A/B LEDs:** The switch color follows the live parameter value when it matches either saved endpoint.
+- **Auto Swell (PRE):** General improvements to pick detection, especially when a note is still decaying. Reset pick detection on bypass.
+- **Home screen knob assignments:** Streamline flow and text: press Exit once to accept a complete assignment and leave the editor. Remove save reminder.
+- **Stomp A/B LEDs:** Footswitches assigned to a parameter have their color reflect the parameter value.
 
 ### In the web editor
 
 - Parameter rows show current home screen knob and Stomp A/B footswitch assignments and let you edit either type.
-- With the new firmware, the editor can show why a block cannot be enabled, such as CPU load or an incompatible capture combination. After sending an enable change, the editor reads the block state back from the pedal.
-
-### Availability
-
-Build the preview locally with [`firmware/build.sh`](README.md#build-your-own) and your official GP-50 V1.1.0 file. The preview passed offline review. Auto Swell under pedal load, LED colors and refresh timing, assignment reload, and editor behavior when the pedal refuses an enable request still need hardware checks. The browser installer continues to offer **v0.1.0 / A1.1.0i**. See the [preview build and technical notes](QA_PREVIEW.md).
+- Show limits on which block cannot be enabled, such as CPU load or an incompatible capture combination.
+- Better sync between editor and pedal state.
 
 ## Peppercorn v0.1.0 (on-screen version A1.1.0i)
 

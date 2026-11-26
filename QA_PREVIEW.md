@@ -1,6 +1,6 @@
-# Peppercorn v0.2.0-rc.1 build and technical notes
+# Peppercorn v0.2.0 build and technical notes
 
-See the [release notes](RELEASE_NOTES.md#peppercorn-v020-rc1) for the user-facing changes and hardware qualification status.
+See the [release notes](RELEASE_NOTES.md#peppercorn-v020-on-screen-version-a110j) for the user-facing changes and hardware qualification status.
 
 ## Reproduce the reviewed firmware
 
