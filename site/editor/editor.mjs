@@ -57,19 +57,20 @@ function showRequestError(error, report = status) {
 }
 
 function startPedalPolling(current) {
-  const interval = 2000;
+  const interval = 500;
   const idle = () => session === current && connected() && !busy && !current.imported &&
     !document.hidden && !document.querySelector('dialog[open]') && !activePointers.size &&
     !document.activeElement?.matches('input[type="number"], select') &&
     performance.now() - lastInteraction >= 800;
-  const schedule = () => setTimeout(tick, interval);
+  const schedule = (delay = interval) => setTimeout(tick, delay);
   function tick() {
     if (session !== current || current.pedal.halted) return;
-    if (!idle()) { schedule(); return; }
+    if (!idle()) { current.pollSlot = null; schedule(); return; }
+    const started = performance.now();
     pollRead = (async () => {
       try {
-        if (await current.pollActive(idle)) render();
-        schedule();
+        if (await current.pollActive(idle, interval)) render();
+        schedule(Math.max(0, interval - (performance.now() - started)));
       } catch (error) {
         current.pedal.close();
         showRequestError(error);
@@ -89,6 +90,7 @@ async function run(fn, message, report = status) {
       await pendingRead;
       if (session?.pedal.halted) return;
     }
+    if (session) session.pollSlot = null;
     await fn();
     if (message) report(message);
   }
