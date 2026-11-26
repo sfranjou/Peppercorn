@@ -12,7 +12,7 @@
 
 - Parameter rows show current home screen knob and Stomp A/B footswitch assignments and let you edit either type.
 - Show limits on which block cannot be enabled, such as CPU load or an incompatible capture combination.
-- The web editor follows knob turns, block toggles, and preset switches on the connected pedal while the editor is idle.
+- The web editor checks the connected pedal about twice per second while the editor is visible and idle, so knob turns, block toggles, and preset switches appear without clicking Refresh.
 
 ## Peppercorn v0.1.0 (on-screen version A1.1.0i)
 
