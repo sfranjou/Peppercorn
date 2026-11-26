@@ -1,6 +1,6 @@
 # Peppercorn v0.2.0 build and technical notes
 
-See the [release notes](RELEASE_NOTES.md#peppercorn-v020-on-screen-version-a110j) for the user-facing changes and hardware qualification status.
+See the [release notes](RELEASE_NOTES.md#peppercorn-v020-on-screen-version-a110j) for the user-facing changes. This image passed offline review. Auto Swell under pedal load, LED colors and refresh timing, assignment reload, and editor behavior if the pedal refuses an enable request still need hardware checks.
 
 ## Reproduce the reviewed firmware
 
